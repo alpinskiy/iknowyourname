@@ -22,13 +22,20 @@
             <h1>
                 You name is <span id="first_name"></span> <span id="last_name"></span>!
             </h1>
+            <div id="tonConnect"></div>
         </div>
     </main>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
     <script>
         Telegram.WebApp.ready();
-        document.getElementById('first_name').innerText = Telegram.WebApp.initDataUnsafe.user.first_name;
-        document.getElementById('last_name').innerText = Telegram.WebApp.initDataUnsafe.user.last_name;
+        document.getElementById('first_name').innerText = Telegram.WebApp.initDataUnsafe.user?.first_name;
+        document.getElementById('last_name').innerText = Telegram.WebApp.initDataUnsafe.user?.last_name;
+
+        const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
+            manifestUrl: 'https://<YOUR_APP_URL>/tonconnect-manifest.json',
+            buttonRootId: 'tonConnect'
+        });
     </script>
 </body>
 </html>
